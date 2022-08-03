@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block script %}
+    <script>
+        function login() {  
+            alert("Login Required");  
+        }  
+    </script>
+{% endblock %}
+
+{% block content %}
+<section class="py-5 mt-5">
+    <div class="container py-5">
+      <div class="container bg-primary-gradient py-5">
+        <div class="row mb-4 mb-lg-5">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+            <h2 class="fw-bold">Influencers</h2>
+            <p class="text-muted w-lg-50">All of our talents.</p>
+            </div>
+        </div>
+        <div class="row mx-auto" style="/*max-width: 700px;*/">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-md-2 mx-auto" style="max-width: 900px;">
+                {% for data in all %}  
+                    <div class="col mb-5">
+                        <div class="card shadow-sm">
+                            <div class="card-body px-4 py-5 px-md-5">
+                                <h3 class="fw-bold card-title">@{{ data["username"] }}</h3>
+                                <h5 class="fw-bold card-title">{{ fcat }}</h5>
+                                <p class="card-text mb-4"><br> {{ data["name"] }} <br> {{ data["email"] }}</p>
+                                {% if current_user.is_anonymous %}
+                                    <a class="btn btn-primary shadow" role="button" href="/login" onclick="login()"
+                                    style="background: repeating-linear-gradient(164deg, #ea772e 0%, #db326e 35%, #7241d1 92%, #554ddd 100%);">VIEW</a>
+                                {% else %}
+                                    <a class="btn btn-primary shadow" role="button" href="{{ url_for('viewUser', userid=data.id) }}"
+                                    style="background: repeating-linear-gradient(164deg, #ea772e 0%, #db326e 35%, #7241d1 92%, #554ddd 100%);">VIEW</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        </div>
+    </div>  
+  </section>
+{% endblock %}

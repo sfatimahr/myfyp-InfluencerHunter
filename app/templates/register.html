@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<!-- <h1>Register</h1>
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <input type="radio" id="influencer" name="account_type" value="Influencer">
+    <label for="influencer">Influencer</label><br>
+    <input type="radio" id="business" name="account_type" value="Business">
+    <label for="business">Business</label><br>
+    <p>
+        {{ form.name.label }}<br>
+        {{ form.name(size=32) }}<br>
+        {% for error in form.name.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.username.label }}<br>
+        {{ form.username(size=32) }}<br>
+        {% for error in form.username.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.email.label }}<br>
+        {{ form.email(size=64) }}<br>
+        {% for error in form.email.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.password.label }}<br>
+        {{ form.password(size=32) }}<br>
+        {% for error in form.password.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.password2.label }}<br>
+        {{ form.password2(size=32) }}<br>
+        {% for error in form.password2.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>{{ form.submit() }}</p>
+</form> -->
+
+<section class="py-5 mt-5">
+    <div class="container py-5">
+        <div class="row mb-4 mb-lg-5">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                <p class="fw-bold text-success mb-2">Sign up</p>
+                <h2 class="fw-bold">Welcome to Influencer Hunter</h2>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6 col-lg-11 col-xl-4">
+                <div class="card">
+                    <div class="card-body text-center d-flex flex-column align-items-center" for="formCheck-3">
+                        <div class="bs-icon-xl bs-icon-circle bs-icon-primary shadow bs-icon my-4"
+                            style="background: repeating-linear-gradient(164deg, #ea772e 0%, #db326e 35%, #7241d1 92%, #554ddd 100%);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
+                                viewBox="0 0 16 16" class="bi bi-person">
+                                <path
+                                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z">
+                                </path>
+                            </svg>
+                        </div>
+
+                        <form action="" method="post">
+                            {{ form.hidden_tag() }}
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="influencer" name="account_type"
+                                    value="Influencer">
+                                <label class="form-check-label" for="influencer">INFLUENCER</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="business" name="account_type"
+                                    value="Business">
+                                <label class="form-check-label" for="business">BUSINESS&nbsp; &nbsp;
+                                    &nbsp;<br><br></label>
+                            </div>
+                            <div class="mb-3"></div>
+                                {{ form.name(class="form-control", type="text", placeholder="Name") }}
+                                {% for error in form.name.errors %}
+                                    <span style="color: red;" class="error-message">[{{ error }}]</span>
+                                {% endfor %}
+                            <div class="mb-3"></div>
+                                {{ form.username(class="form-control", type="text", placeholder="Username") }}
+                                {% for error in form.username.errors %}
+                                    <span style="color: red;" class="error-message">[{{ error }}]</span>
+                                {% endfor %}
+                            <div class="mb-3"></div>
+                                <select name="category" data-live-search="true" id="category" class="selectpicker form-control" title="Category">
+                                    <option>Category</option>
+                                    {% for ctg in categories %}
+                                    <option value="{{ctg.id}}">{{ctg.catg}}</option>
+                                    {% endfor %}
+                                </select>
+                            <div class="mb-3"></div>
+                                {{ form.email(class="form-control", type="email", placeholder="Email") }}
+                                {% for error in form.email.errors %}
+                                    <span style="color: red;" class="error-message">[{{ error }}]</span>
+                                {% endfor %}
+                            <div class="mb-3"></div>
+                                {{ form.password(class="form-control", type="password", placeholder="Password") }}
+                                {% for error in form.password.errors %}
+                                <span style="color: red;" class="error-message">[{{ error }}]</span>
+                                {% endfor %}
+                            <div class="mb-3"></div>
+                                {{ form.password2(class="form-control", type="password", placeholder="Re-enter Password") }}
+                                {% for error in form.password2.errors %}
+                                <span style="color: red;" class="error-message">[{{ error }}]</span>
+                                {% endfor %}
+                            <div class="mb-3"></div>
+                            <button class="btn btn-primary shadow d-block w-100" type="submit"
+                                style="background: linear-gradient(-28deg, #db326e, #c42c9d), #db326e;">Sign up</button>
+                            <div class="mb-3"></div>
+                        </form>
+                        <p class="text-muted">Already have an account?<br><a href="/login">Log in</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="w-100"></div>
+        </div>
+    </div>
+</section>
+{% endblock %}

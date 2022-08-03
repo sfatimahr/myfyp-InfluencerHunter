@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <section class="py-5 mt-5">
+        <div class="container py-5">
+            <h1>Edit Profile
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                    - {{ message }}
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </h1>
+            <!-- <form action="" method="post">
+                {{ form.hidden_tag() }}
+                <p>
+                    {{ form.name.label }}<br>
+                    {{ form.name(size=32) }}<br>
+                    {% for error in form.name.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.username.label }}<br>
+                    {{ form.username(size=32) }}<br>
+                    {% for error in form.name.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>{{ form.submit() }}</p>
+            </form> -->
+            <form action="" method="post"> 
+                {{ form.hidden_tag() }}
+                <div class="mb-3">
+                    <p>Name:</p><br>
+                    {{ form.name(class="form-control", type="text") }}
+                    {% for error in form.name.errors %}
+                        <span style="color: red;" class="error-message">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <div class="mb-3">
+                    <p>Username</p><br>
+                    {{ form.username(class="form-control", type="text") }}
+                    {% for error in form.username.errors %}
+                        <span style="color: red;" class="error-message">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <div class="mb-3">
+                    <p>Category</p><br>
+                    <select name="category" data-live-search="true" id="category" class="form-control" title="Category">
+                        <option value="{{form.category.data}}">{{form.category.data}}</option>
+                        {% for ctg in catgs %}
+                        <option value="{{ctg.id}}">{{ctg.catg}}</option>
+                        {% endfor %}
+                    </select>
+                    {% for error in form.username.errors %}
+                        <span style="color: red;" class="error-message">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-primary shadow d-block w-100" type="submit"
+                        style="background: linear-gradient(-28deg, #db326e, #c42c9d), #db326e;">Update</button>
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+	<br/>
+    <div class="container pt-4 pt-xl-5">
+        <div class="row pt-5">
+            <div class="col-md-8 col-xl-6 text-center text-md-start mx-auto">
+                <h2>You Searched For: <em>{{ searched }}</em></h2><br>
+                
+                {% if categories %}
+
+                {% for user in categories %}
+                    <div class="shadow p-3 mb-5 bg-body rounded">
+                    <a href="{{ url_for('viewUser', userid=user.id)}}">{{acc}}</a>
+                    </div>
+                
+                {% endfor %}
+
+                {% else %}
+                Sorry, your search term: <i><strong>{{ searched }}</strong></i> was not found...
+                {% endif %}
+            </div>
+        </div>
+    </div>
+	
+	<br/>
+
+{% endblock %}

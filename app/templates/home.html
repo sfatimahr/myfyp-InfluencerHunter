@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<!-- <header class="masthead" >
+    <div class="intro-body" style="background: repeating-linear-gradient(90deg, #ea772e 0%, #db326e 35%, #7241d1 92%, #554ddd 100%);">
+        <div class="container">
+            <h1>Hi, {{ current_user.name }}!</h1>
+        <h2>This is the home page when logged in</h2>
+        </div>
+    <!-- {% for post in posts %}
+    <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
+    {% endfor %}
+    </div> -->
+
+    <section class="py-5 mt-5">
+        <div class="container py-5">
+          <div class="row mb-5">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+              <h2 class="fw-bold">Hi, {{ current_user.name }}!</h2>
+              <p class="text-muted w-lg-50"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+{% endblock %}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>InfluencerHunter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/styles.min.css')}}" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" > -->
+
+</head>
+
+<body>
+    
+    <section class="py-5 mt-5">
+        <div class="container py-5">
+          <div class="row mb-4 mb-lg-5">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+            <p class="fw-bold text-success mb-2">Admin</p>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6 col-xl-4">
+                <div class="card">
+                    <div class="card-body text-center d-flex flex-column align-items-center">
+                        <form action="" method="post" novalidate> 
+                            {{ form.hidden_tag() }}
+                            <div class="mb-3">
+                                {{ form.email(class="form-control", type="email", placeholder="Email") }}
+                                {% for error in form.email.errors %}
+                                    <span style="color: red;" class="error-message">[{{ error }}]</span>
+                                {% endfor %}
+                            </div>
+                            <div class="mb-3">
+                                {{ form.password(class="form-control", type="password", placeholder="Password") }}
+                                {% for error in form.password.errors %}
+                                <span style="color: red;" class="error-message">[{{ error }}]</span>
+                                {% endfor %}
+                            </div>
+                            <div class="mb-3">
+                                <button class="btn btn-primary shadow d-block w-100" type="submit"
+                                    style="background: linear-gradient(-28deg, #db326e, #c42c9d), #db326e;">Log in</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <script src="{{ url_for('static', filename='assets/js/jquery.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='assets/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='assets/js/script.min.js')}}"></script>
+</body>
+</html>

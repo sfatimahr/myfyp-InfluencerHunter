@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container pt-4 pt-xl-5">
+    <div class="row pt-5">
+        <div class="col-md-8 col-xl-6 text-center text-md-start mx-auto">
+            <h2>Evaluation<br>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                    - {{ message }}
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </h2>
+            {% for rating in range(eval.rating) %}
+                        <span class="fa fa-star checked"></span>
+                    {% endfor %}
+            <p class="text-muted">By : {{ eval.author.username }} </p>
+            <h4 class="fw-bold">{{ eval.comment }}</h4>
+            <p class="text-muted">{{ moment(eval.timestamp).format('LL') }}<br></p>
+            <a class="btn" style="background-color: aliceblue;" role="button" href="{{link}}">Related post</a><br>
+            
+            <br><br>
+            <h3>Report this evaluation</h3>
+            <form action="" method="post" > 
+                {{ form.hidden_tag() }} 
+                <div class="mb-3">
+                    {{ form.complaint(class="form-control", type="text", placeholder='Complaint') }}
+                    {% for error in form.complaint.errors %}
+                        <span style="color: red;" class="error-message">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-primary shadow d-block w-100" type="submit"
+                        style="background: linear-gradient(-28deg, #db326e, #c42c9d), #db326e;">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
